@@ -1,0 +1,8 @@
+pandas
+xgboost
+sklearn
+tqdm
+matplotlib
+torch
+numpy
+pytorch_transformers
