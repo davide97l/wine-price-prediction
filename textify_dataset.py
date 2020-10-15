@@ -6,7 +6,7 @@ def textify(args):
     make_discrete = args.make_discrete
     path_data = args.path_data
     n_labels = args.num_labels
-    label_range = args.num_labels
+    label_range = args.label_range
     labels = [i for i in range(n_labels)]
     values = [i * label_range + label_range for i in range(n_labels)]
 

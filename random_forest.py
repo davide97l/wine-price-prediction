@@ -5,16 +5,47 @@ from sklearn import preprocessing
 from sklearn.model_selection import GridSearchCV
 
 
-def preprocess_cat_columns(df, columns):
+def order_cat_columns(df, col):
+    values = pd.unique(df[col])
+    dict_avg = {}
+    for i, v in enumerate(values):
+        df1 = df.loc[df[col] == v]
+        mean = df1["price"].mean()
+        dict_avg[v] = mean
+    dict_avg = {k: v for k, v in sorted(dict_avg.items(), key=lambda item: item[1])}
+    ordered_values = dict_avg.keys()
+    dict_values = {}
+    for i, v in enumerate(ordered_values):
+        dict_values[v] = i
+    return dict_values
+
+
+def preprocess_cat_columns(df, columns, order_columns):
+    if not hasattr(preprocess_cat_columns, "dict_values"):
+        preprocess_cat_columns.dict_values = {}
+
+    def get_value(x):
+        if x in preprocess_cat_columns.dict_values[col].keys():
+            v = preprocess_cat_columns.dict_values[col][x]
+        else:
+            v = len(preprocess_cat_columns.dict_values[col])
+            preprocess_cat_columns.dict_values[col][x] = v
+        return v
+
     for col in columns:
         if len(pd.unique(df[col])) <= 5:
             one_hot = pd.get_dummies(df[col])
             df = df.join(one_hot)
             df = df.drop([col], axis=1)
         else:
-            le = preprocessing.LabelEncoder()
-            le.fit(df[col])
-            df[col] = le.transform(df[col])
+            if col not in order_columns:
+                le = preprocessing.LabelEncoder()
+                le.fit(df[col])
+                df[col] = le.transform(df[col])
+            else:
+                if order_columns is not None and col not in preprocess_cat_columns.dict_values.keys():
+                    preprocess_cat_columns.dict_values[col] = order_cat_columns(df, col)
+                df[col] = df[col].apply(get_value)
     return df
 
 
@@ -35,13 +66,14 @@ def remove_outliers(train_x, train_y):
     return train_x, train_y
 
 
-def process_data(df, drop_columns=None, categorical_columns=None, normalize_columns=None):
+def process_data(df, drop_columns=None, categorical_columns=None, normalize_columns=None, order_columns=None):
     if drop_columns:
         df = df.drop(drop_columns, axis=1)
     if categorical_columns:
-        df = preprocess_cat_columns(df, categorical_columns)
+        df = preprocess_cat_columns(df, categorical_columns, order_columns)
     if normalize_columns:
         df = normalize(df, normalize_columns)
+    print(df)
     return df
 
 
@@ -77,12 +109,13 @@ def random_forest(args):
     cat_columns = ["country", "province", "winery", "region_1", "variety", "designation"]
     drop_columns = ["region_2", "review"]
     normalize_columns = None  # ["country", "province", "winery", "region_1", "variety", "designation", "review_score"]
+    order_columns = None  # ["country", "province", "winery", "region_1", "variety", "designation"]
     label = "price"
 
     train_dataset = pd.read_csv(args.path_data, encoding='ISO-8859-1')
     test_dataset = pd.read_csv(args.path_test, encoding='ISO-8859-1')
-    train_dataset = process_data(train_dataset, drop_columns, cat_columns, normalize_columns)
-    test_dataset = process_data(test_dataset, drop_columns, cat_columns, normalize_columns)
+    train_dataset = process_data(train_dataset, drop_columns, cat_columns, normalize_columns, order_columns)
+    test_dataset = process_data(test_dataset, drop_columns, cat_columns, normalize_columns, order_columns)
     train_x = train_dataset.drop([label], axis=1).values
     train_y = train_dataset[label].values
     if args.remove_outliers:
