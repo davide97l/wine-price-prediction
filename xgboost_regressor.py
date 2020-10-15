@@ -123,9 +123,9 @@ def xgboost_regressor(args):
     else:
         model = search_best_model(model, train_x, train_y, select_best_model=args.select_best_model)
 
+    print("feature importance")
     print(feature_importance(model))
 
-    #scatter_plot(train_dataset, "country", "price")
     print("predicting")
     xg_preds = np.array(model.predict(test_dataset)).astype(int)
     pd.DataFrame(xg_preds).to_csv(args.path_save, index=False, header=False)
@@ -136,7 +136,7 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_data', type=str, default='training_set.csv')
     parser.add_argument('--path_test', type=str, default='test_set.csv')
-    parser.add_argument('--no_grid_search', default=True, action='store_false')
+    parser.add_argument('--no_grid_search', default=False, action='store_false')
     parser.add_argument('--path_save', type=str, default="xg_predictions.csv")
     parser.add_argument('--select_best_model', default=False, action='store_true')
     args = parser.parse_known_args()[0]

@@ -92,7 +92,7 @@ def evaluate_one_epoch(model, f_loss, dataset, batch_size=32, device="cpu"):
 
 def predict_one_epoch(model, dataset, batch_size=32, device="cpu"):
     generator = torch.utils.data.DataLoader(
-        dataset, batch_size=batch_size, shuffle=True
+        dataset, batch_size=batch_size
     )
     model.eval()
     predictions = []
@@ -116,8 +116,6 @@ def bert_classification(args):
     batch_size = args.batch_size
     max_length = args.max_length
     device = args.device
-    test = args.test
-    val = args.val
     limit_rows = args.limit_rows
     save_model = args.save_model
     load_model = args.load_model
@@ -131,16 +129,18 @@ def bert_classification(args):
         train_x = train_x[:limit_rows]
         train_y = train_y[:limit_rows]
 
-    if val and os.path.exists(path_val):
+    if path_val is not None and os.path.exists(path_val):
         df = pd.read_csv(path_val, encoding='ISO-8859-1')
         val_y = df["price"].values.astype(int)
         val_x = df[text_column].values
+        val = True
     else:
         val = False
 
-    if test and os.path.exists(path_test):
+    if path_test is not None and os.path.exists(path_test):
         df = pd.read_csv(path_test, encoding='ISO-8859-1')
         test_x = df[text_column].values
+        test = True
     else:
         test = False
 
@@ -151,8 +151,8 @@ def bert_classification(args):
         test_set = CustomDataset(test_x, np.zeros([test_x.shape[0]]), max_length, bert)
 
     model = BertForSequenceClassification.from_pretrained(bert, num_labels=num_labels).to(device)
-    if load_model and os.path.exists("classification_bert.pth"):
-        model.load_state_dict(torch.load("classification_bert.pth"))
+    if load_model and os.path.exists("classification_bert_" + str(num_labels) + ".pth"):
+        model.load_state_dict(torch.load("classification_bert_" + str(num_labels) + ".pth"))
         print("Model loaded")
     else:
         load_model = False
@@ -200,7 +200,7 @@ def get_args():
     parser.add_argument('--path_data', type=str, default='training_set.csv')
     parser.add_argument('--path_val', type=str, default='validation_set.csv')
     parser.add_argument('--path_test', type=str, default='test_set.csv')
-    parser.add_argument('--epochs', type=int, default=1000)
+    parser.add_argument('--epochs', type=int, default=10)
     parser.add_argument('--bert', type=str, default="bert-base-uncased")
     parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--limit_rows', type=int, default=None)
@@ -210,18 +210,13 @@ def get_args():
     parser.add_argument(
         '--device', type=str,
         default='cuda' if torch.cuda.is_available() else 'cpu')
-    parser.add_argument('--test', default=True, action='store_false')
-    parser.add_argument('--val', default=True, action='store_false')
     parser.add_argument('--save_model', default=True, action='store_false')
     parser.add_argument('--load_model', default=True, action='store_false')
     args = parser.parse_known_args()[0]
     return args
 
 
-# python bert_classification.py
-# python bert_classification.py --epochs 1000 --path_data training_set_discrete_labels.csv
-# python bert_classification.py --epochs 1 --path_data training_set_discrete_labels.csv --path_test test_set_discrete_labels.csv --num_labels 20 --batch_size 64 --text_column content --max_length 13
-# python bert_classification.py --epochs 1 --path_data training_set_discrete_labels.csv --path_test test_set_discrete_labels.csv --num_labels 20 --batch_size 64 --text_column content --max_length 13 --limit_rows 1000
+# python bert_classification.py --epochs 40 --path_data training_set_text_discrete_20.csv --path_test training_set_text_discrete_20.csv --num_labels 20 --batch_size 64 --text_column content --max_length 13
 if __name__ == '__main__':
     args = get_args()
     bert_classification(args)

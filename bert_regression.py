@@ -116,7 +116,7 @@ def evaluate_one_epoch(model, dataset, f_loss, batch_size=32, device="cpu"):
 
 def predict_one_epoch(model, dataset, batch_size=32, device="cpu"):
     generator = torch.utils.data.DataLoader(
-        dataset, batch_size=batch_size, shuffle=True
+        dataset, batch_size=batch_size
     )
     model.eval()
     predictions = []
@@ -139,8 +139,6 @@ def bert_regression(args):
     batch_size = args.batch_size
     max_length = args.max_length
     device = args.device
-    test = args.test
-    val = args.val
     limit_rows = args.limit_rows
     save_model = args.save_model
     load_model = args.load_model
@@ -153,16 +151,18 @@ def bert_regression(args):
         train_x = train_x[:limit_rows]
         train_y = train_y[:limit_rows]
 
-    if val and os.path.exists(path_val):
+    if path_val is not None and os.path.exists(path_val):
         df = pd.read_csv(path_val, encoding='ISO-8859-1')
         val_y = df["price"].values.astype(float)
         val_x = df["review"].values
+        val = True
     else:
         val = False
 
-    if test and os.path.exists(path_test):
+    if path_test is not None and os.path.exists(path_test):
         df = pd.read_csv(path_test, encoding='ISO-8859-1')
         test_x = df["review"].values
+        test = True
     else:
         test = False
 
@@ -222,16 +222,14 @@ def get_args():
     parser.add_argument('--path_data', type=str, default='training_set.csv')
     parser.add_argument('--path_val', type=str, default='validation_set.csv')
     parser.add_argument('--path_test', type=str, default='test_set.csv')
-    parser.add_argument('--epochs', type=int, default=1000)
+    parser.add_argument('--epochs', type=int, default=10)
     parser.add_argument('--bert', type=str, default="bert-base-uncased")
-    parser.add_argument('--batch_size', type=int, default=16)
+    parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--limit_rows', type=int, default=None)
     parser.add_argument('--max_length', type=int, default=300)
     parser.add_argument(
         '--device', type=str,
         default='cuda' if torch.cuda.is_available() else 'cpu')
-    parser.add_argument('--test', default=True, action='store_false')
-    parser.add_argument('--val', default=True, action='store_false')
     parser.add_argument('--save_model', default=True, action='store_false')
     parser.add_argument('--load_model', default=True, action='store_false')
     parser.add_argument('--freeze_bert', default=False, action='store_true')
@@ -239,8 +237,7 @@ def get_args():
     return args
 
 
-# python bert_regression.py
-# python bert_regression.py --epochs 1000 --freeze_bert
+# python bert_regression.py --epochs 40 --freeze_bert --path_data training_set_text.csv --path_test training_set_text.csv --batch_size 64 --text_column content --max_length 13
 if __name__ == '__main__':
     args = get_args()
     bert_regression(args)
