@@ -77,7 +77,7 @@ def process_data(df, drop_columns=None, categorical_columns=None, normalize_colu
     return df
 
 
-def search_best_model(model, train_x, train_y, select_best_model):
+def search_best_model(model, train_x, train_y):
 
     parameters_for_testing = {
         'n_estimators': [100, 300],
@@ -89,18 +89,13 @@ def search_best_model(model, train_x, train_y, select_best_model):
 
     # 'max_depth': None, 'max_features': 'sqrt', 'min_impurity_decrease': 0.0, 'min_samples_split': 4, 'n_estimators': 300
 
-    if select_best_model:
-        model = RandomForestRegressor(max_depth=None, n_estimators=300, max_features='sqrt', min_impurity_decrease=0.,
-                                      min_samples_split=4)
-    else:
-        model = GridSearchCV(estimator=model, param_grid=parameters_for_testing,
-                             n_jobs=32, verbose=10, scoring='neg_mean_squared_error')
+    model = GridSearchCV(estimator=model, param_grid=parameters_for_testing,
+                         n_jobs=32, verbose=10, scoring='neg_mean_squared_error')
     model.fit(train_x, train_y)
-    if not select_best_model:
-        print('best params')
-        print(model.best_params_)
-        print('best score')
-        print(model.best_score_)
+    print('best params')
+    print(model.best_params_)
+    print('best score')
+    print(model.best_score_)
 
     return model
 
@@ -121,9 +116,10 @@ def random_forest(args):
     if args.remove_outliers:
         train_x, train_y = remove_outliers(train_x, train_y)
 
-    rf_regr = RandomForestRegressor(max_depth=None, n_estimators=100)
-    if args.no_grid_search:
-        rf_regr = search_best_model(rf_regr, train_x, train_y, select_best_model=args.select_best_model)
+    rf_regr = RandomForestRegressor(max_depth=None, n_estimators=300, max_features='sqrt', min_impurity_decrease=0.,
+                                    min_samples_split=4)
+    if not args.grid_search:
+        rf_regr = search_best_model(rf_regr, train_x, train_y)
     else:
         rf_regr.fit(train_x, train_y)
     rf_preds = rf_regr.predict(test_dataset.values)
@@ -137,16 +133,14 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_data', type=str, default='training_set.csv')
     parser.add_argument('--path_test', type=str, default='test_set.csv')
-    parser.add_argument('--no_grid_search', default=True, action='store_false')
+    parser.add_argument('--grid_search', default=False, action='store_false')
     parser.add_argument('--remove_outliers', default=False, action='store_true')
     parser.add_argument('--path_save', type=str, default="rf_predictions.csv")
-    parser.add_argument('--select_best_model', default=False, action='store_true')
     args = parser.parse_known_args()[0]
     return args
 
 
-# python random_forest.py --no_grid_search
-# python random_forest.py --select_best_model
+# python random_forest.py --grid_search
 if __name__ == '__main__':
     args = get_args()
     random_forest(args)

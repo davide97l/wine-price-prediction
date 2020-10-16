@@ -3,13 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="6adecd74-c857-44c8-9108-996054da3589" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.~lock.training_set.csv#" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bg_rforest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bg_xgboost.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_game.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/compute_labels.py" beforeDir="false" afterPath="$PROJECT_DIR$/compute_labels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/random_forest.py" beforeDir="false" afterPath="$PROJECT_DIR$/random_forest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/textify_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/textify_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine_data/bert_classification_20.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine_data/bert_regression.csv" beforeDir="false" afterPath="$PROJECT_DIR$/wine_data/bert_regression.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine_data/training_set_text_discrete_20.csv" beforeDir="false" afterPath="$PROJECT_DIR$/wine_data/training_set_text_discrete_20.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rf_predictions.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/bert_regression.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/bert_regression_train_set.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/ensemble_predictions.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/rf_predictions.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/test_set_text.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/test_set_text_discrete_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/training_set_text.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/training_set_text_discrete_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine_data/xg_predictions.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost_regressor.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost_regressor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,95 +39,39 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="17" />
+          <entry key="py" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="17" />
+          <entry key="Python" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="111" />
-          <entry key="py" value="11465" />
+          <entry key="py" value="11496" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="111" />
-          <entry key="Python" value="11465" />
+          <entry key="Python" value="11496" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/random_forest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="2121">
+              <caret line="137" column="67" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1602741511290" expanded="true" signature="826:1106" ph="..." />
-                <marker date="1602741511290" expanded="true" signature="2239:2242" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/word_embedding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-              <folding>
-                <element signature="e#1#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_analysis.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xgboost_regressor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1930">
-              <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
-              <folding>
-                <marker date="1602726040662" expanded="true" signature="1698:1699" ph="..." />
-                <marker date="1602726040662" expanded="true" signature="1698:1704" ph="..." />
-                <marker date="1602726040662" expanded="true" signature="1698:2943" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compute_labels.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/textify_dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <marker date="1602764533369" expanded="true" signature="826:1106" ph="..." />
+                <marker date="1602764533369" expanded="true" signature="2239:2242" ph="..." />
               </folding>
             </state>
           </provider>
@@ -126,8 +80,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/regression_ensemble.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
+            <state relative-caret-position="252">
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xgboost_regressor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170">
+              <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+              <folding>
+                <marker date="1602764533356" expanded="true" signature="1679:1680" ph="..." />
+                <marker date="1602764533356" expanded="true" signature="1679:1685" ph="..." />
+                <marker date="1602764533356" expanded="true" signature="1679:2412" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -135,11 +112,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bert_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3435">
-              <caret line="243" selection-start-line="243" selection-end-line="243" />
+            <state relative-caret-position="147">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1602726040710" expanded="true" signature="334:388" ph="..." />
+                <marker date="1602763674481" expanded="true" signature="334:388" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/compute_labels.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/textify_dataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="74" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,8 +146,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bert_classification.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="218" column="43" selection-start-line="218" selection-start-column="43" selection-end-line="218" selection-end-column="43" />
+            <state relative-caret-position="271">
+              <caret line="218" column="2" selection-start-line="218" selection-start-column="2" selection-end-line="218" selection-end-column="205" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -177,6 +175,7 @@
       <find>limi</find>
       <find>val</find>
       <find>shuffl</find>
+      <find>cuda</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,12 +200,12 @@
         <option value="$PROJECT_DIR$/bert_regression.py" />
         <option value="$PROJECT_DIR$/bert_classification.py" />
         <option value="$PROJECT_DIR$/regression_ensemble.py" />
-        <option value="$PROJECT_DIR$/xgboost_regressor.py" />
         <option value="$PROJECT_DIR$/word_embedding.py" />
-        <option value="$PROJECT_DIR$/compute_labels.py" />
         <option value="$PROJECT_DIR$/textify_dataset.py" />
         <option value="$PROJECT_DIR$/data_analysis.py" />
+        <option value="$PROJECT_DIR$/xgboost_regressor.py" />
         <option value="$PROJECT_DIR$/random_forest.py" />
+        <option value="$PROJECT_DIR$/compute_labels.py" />
       </list>
     </option>
   </component>
@@ -252,7 +251,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_analysis">
+  <component name="RunManager" selected="Python.compute_labels">
     <configuration name="compute_labels" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="wine_price_prediction" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -367,8 +366,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.data_analysis" />
         <item itemvalue="Python.compute_labels" />
+        <item itemvalue="Python.data_analysis" />
         <item itemvalue="Python.random_forest" />
         <item itemvalue="Python.word_embedding" />
         <item itemvalue="Python.textify_dataset" />
@@ -397,13 +396,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32907802" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32907802" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2496454" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2496454" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -443,70 +442,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bg_xgboost.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-149" />
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bg_rforest.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/business_game.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bert_classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="218" column="43" selection-start-line="218" selection-start-column="43" selection-end-line="218" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/regression_ensemble.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="84" selection-start-line="11" selection-start-column="84" selection-end-line="11" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xgboost_regressor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1930">
-          <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
-          <folding>
-            <marker date="1602726040662" expanded="true" signature="1698:1699" ph="..." />
-            <marker date="1602726040662" expanded="true" signature="1698:1704" ph="..." />
-            <marker date="1602726040662" expanded="true" signature="1698:2943" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bert_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3435">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <marker date="1602726040710" expanded="true" signature="334:388" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compute_labels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/textify_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/word_embedding.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -520,20 +464,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        <state relative-caret-position="404">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/textify_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="63" column="2" selection-start-line="63" selection-start-column="2" selection-end-line="63" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bert_regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+            <marker date="1602763674481" expanded="true" signature="334:388" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/regression_ensemble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/random_forest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="2121">
+          <caret line="137" column="67" selection-start-line="137" selection-start-column="67" selection-end-line="137" selection-end-column="67" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1602741511290" expanded="true" signature="826:1106" ph="..." />
-            <marker date="1602741511290" expanded="true" signature="2239:2242" ph="..." />
+            <marker date="1602764533369" expanded="true" signature="826:1106" ph="..." />
+            <marker date="1602764533369" expanded="true" signature="2239:2242" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xgboost_regressor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="109" column="57" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+          <folding>
+            <marker date="1602764533356" expanded="true" signature="1679:1680" ph="..." />
+            <marker date="1602764533356" expanded="true" signature="1679:1685" ph="..." />
+            <marker date="1602764533356" expanded="true" signature="1679:2412" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bert_classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="218" column="2" selection-start-line="218" selection-start-column="2" selection-end-line="218" selection-end-column="205" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compute_labels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>

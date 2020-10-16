@@ -57,7 +57,7 @@ def scatter_plot(data, x, y):
     plt.show()
 
 
-def search_best_model(model, train_x, train_y, select_best_model):
+def search_best_model(model, train_x, train_y):
 
     parameters_for_testing = {
         'colsample_bytree': [0.5, 1],
@@ -72,24 +72,13 @@ def search_best_model(model, train_x, train_y, select_best_model):
     #{'colsample_bytree': 0.5, 'gamma': 0.3, 'max_depth': 3, 'min_child_weight': 4, 'n_estimators': 10000,
     # 'reg_lambda': 1, 'subsample': 0.95}
 
-    if select_best_model:
-        model = xgboost.XGBRegressor(colsample_bytree=0.5,
-                                     gamma=0.3,
-                                     max_depth=3,
-                                     min_child_weight=4,
-                                     n_estimators=10000,
-                                     reg_lambda=1.,
-                                     subsample=0.95,
-                                     seed=42)
-    else:
-        model = GridSearchCV(estimator=model, param_grid=parameters_for_testing,
-                             n_jobs=32, verbose=10, scoring='neg_mean_squared_error')
+    model = GridSearchCV(estimator=model, param_grid=parameters_for_testing,
+                         n_jobs=32, verbose=10, scoring='neg_mean_squared_error')
     model.fit(train_x, train_y)
-    if not select_best_model:
-        print('best params')
-        print(model.best_params_)
-        print('best score')
-        print(model.best_score_)
+    print('best params')
+    print(model.best_params_)
+    print('best score')
+    print(model.best_score_)
 
     return model
 
@@ -102,28 +91,25 @@ def xgboost_regressor(args):
 
     train_dataset = pd.read_csv(args.path_data, encoding='ISO-8859-1')
     test_dataset = pd.read_csv(args.path_test, encoding='ISO-8859-1')
-    train_dataset = process_data(train_dataset, drop_columns, cat_columns)
-    test_dataset = process_data(test_dataset, drop_columns, cat_columns)
+    train_dataset = process_data(train_dataset, drop_columns, cat_columns, normalize_columns)
+    test_dataset = process_data(test_dataset, drop_columns, cat_columns, normalize_columns)
     train_x = train_dataset.drop([label], axis=1)
     train_y = train_dataset[label]
 
-    model = xgboost.XGBRegressor(colsample_bytree=0.4,
-                                 gamma=0,
-                                 learning_rate=0.07,
+    model = xgboost.XGBRegressor(colsample_bytree=0.5,
+                                 gamma=0.3,
                                  max_depth=3,
-                                 min_child_weight=1.5,
+                                 min_child_weight=4,
                                  n_estimators=10000,
-                                 reg_alpha=0.75,
-                                 reg_lambda=0.45,
-                                 subsample=0.6,
+                                 reg_lambda=1.,
+                                 subsample=0.95,
                                  seed=42)
-    print("start training")
-    if not args.no_grid_search:
+    if not args.grid_search:
         model.fit(train_x, train_y)
     else:
-        model = search_best_model(model, train_x, train_y, select_best_model=args.select_best_model)
+        model = search_best_model(model, train_x, train_y)
 
-    print("feature importance")
+    print("feature importance: xgb")
     print(feature_importance(model))
 
     print("predicting")
@@ -136,15 +122,13 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--path_data', type=str, default='training_set.csv')
     parser.add_argument('--path_test', type=str, default='test_set.csv')
-    parser.add_argument('--no_grid_search', default=False, action='store_false')
+    parser.add_argument('--grid_search', default=False, action='store_true')
     parser.add_argument('--path_save', type=str, default="xg_predictions.csv")
-    parser.add_argument('--select_best_model', default=False, action='store_true')
     args = parser.parse_known_args()[0]
     return args
 
 
-# python xgboost_regressor.py --path_save "xg_predictions.csv" --no_grid_search
-# python xgboost_regressor.py --path_save "xg_predictions.csv" --select_best_model
+# python xgboost_regressor.py --path_save "xg_predictions.csv" --grid_search
 if __name__ == '__main__':
     args = get_args()
     xgboost_regressor(args)
