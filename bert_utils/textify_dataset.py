@@ -61,7 +61,7 @@ def get_args():
     return args
 
 
-# python textify_dataset.py --path_data "training_set.csv" --make_discrete
+# python bert_utils/textify_dataset.py --path_data "training_set.csv" --make_discrete
 if __name__ == '__main__':
     args = get_args()
     textify(args)
