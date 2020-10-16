@@ -15,8 +15,7 @@ def compute_score(args):
     df1 = pd.read_csv(path_data, encoding='ISO-8859-1')["price"].values
     df2 = pd.read_csv(path_validation, encoding='ISO-8859-1', header=None).values
     score = rmse(df1, df2)
-    print(score)
-
+    print("rmse:", score)
     print("done!")
 
 
@@ -28,6 +27,7 @@ def get_args():
     return args
 
 
+# python compute_score.py --path_data "training_set.csv" --path_val "ensemble_predictions.csv"
 if __name__ == '__main__':
     args = get_args()
     compute_score(args)

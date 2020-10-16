@@ -48,7 +48,7 @@ def textify(args):
     output_path += ".csv"
     df.to_csv(output_path, index=False)
     print("created file:", output_path)
-    print("done!")
+    return df
 
 
 def get_args():

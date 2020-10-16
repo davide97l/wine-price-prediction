@@ -1,7 +1,7 @@
 import pandas as pd
 
 if __name__ == '__main__':
-    files = ["rf_predictions.csv", "xg_predictions.csv"]
+    files = ["results_train/rf_predictions.csv", "results_train/xg_predictions.csv"]
     assert len(files) > 1
 
     data = pd.read_csv(files[0], header=None).values

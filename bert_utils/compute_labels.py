@@ -1,7 +1,7 @@
 import pandas as pd
 
 if __name__ == '__main__':
-    path_data = "bert_classification_20.csv"
+    path_data = "../bert_classification_train_set_20.csv"
     label_range = 5
 
     df = pd.read_csv(path_data, encoding='ISO-8859-1', header=None)
@@ -12,5 +12,5 @@ if __name__ == '__main__':
 
     df = df.apply(regress, axis=1)
 
-    df.to_csv("bert_regression_20.csv", index=False, header=False)
+    df.to_csv("../bert_regression_train_set_20.csv", index=False, header=False)
     print("done!")
