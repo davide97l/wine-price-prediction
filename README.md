@@ -6,6 +6,6 @@ Those models have to predict the price of a wine bottle based on a collection of
 |----------------------------------------|----------------|---------------|
 | Bert regressor                         | 12.67          |               |
 | Bert classifier (label discretization) | 16.05          |               |
-| Xgboost + Grid search                  | 8.11           |               |
-| Random forest + Grid search            | 7.85           |               |
-| Ensemble (Xgboost + Random forest)     | 7.16           |               |
+| Xgboost + Grid search                  | 8.11           | 20.78         |
+| Random forest + Grid search            | 7.85           | 22.56         |
+| Ensemble (Xgboost + Random forest)     | 7.16           | 20.50         |
