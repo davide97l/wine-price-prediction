@@ -66,8 +66,8 @@ def train_one_epoch(model, optimizer, dataset, batch_size=32, device="cpu"):
         train_loss += loss.item()
         pred_labels = torch.argmax(logits, dim=1)
         train_acc += (pred_labels == labels).sum().item()
-    train_loss /= len(dataset)
-    train_acc /= len(dataset)
+    train_loss /= len(dataset) // batch_size
+    train_acc /= len(dataset) // batch_size
     return train_loss, train_acc
 
 
@@ -85,8 +85,8 @@ def evaluate_one_epoch(model, f_loss, dataset, batch_size=32, device="cpu"):
             loss += err.item()
             pred_labels = torch.argmax(logits, dim=1)
             acc += (pred_labels == labels).sum().item()
-    loss /= len(dataset)
-    acc /= len(dataset)
+    loss /= len(dataset) // batch_size
+    acc /= len(dataset) // batch_size
     return loss, acc
 
 
