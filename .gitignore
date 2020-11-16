@@ -128,6 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-venv/
 .idea/
 box_office_prediction/
+compute_score.py
