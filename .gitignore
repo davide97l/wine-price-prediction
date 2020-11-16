@@ -130,4 +130,3 @@ dmypy.json
 
 .idea/
 box_office_prediction/
-compute_score.py
